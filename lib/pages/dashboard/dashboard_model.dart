@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/nutritional_overview_widget.dart';
 import '/components/successes_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,6 +18,9 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  // Stores action output result for [Backend Call - API (test_post_test_post)] action in FloatingActionButton widget.
+  ApiCallResponse? apiResultm0q;
 
   /// Initialization and disposal methods.
 
