@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/nutritional_overview_widget.dart';
 import '/components/successes_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -288,6 +289,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
           onPressed: () async {
             final selectedMedia = await selectMediaWithSourceBottomSheet(
               context: context,
+              maxWidth: 2500.00,
+              imageQuality: 100,
               allowPhoto: true,
             );
             if (selectedMedia != null &&
@@ -318,6 +321,28 @@ class _DashboardWidgetState extends State<DashboardWidget>
                 return;
               }
             }
+
+            _model.apiResultm0q =
+                await FastAPIGroup.testPostTestPostCall.call();
+            if ((_model.apiResultm0q?.succeeded ?? true)) {
+              await showDialog(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: const Text('It Worked'),
+                    content: const Text('API call worked'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(alertDialogContext),
+                        child: const Text('Ok'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+
+            setState(() {});
           },
           backgroundColor: FlutterFlowTheme.of(context).primary,
           elevation: 8.0,
