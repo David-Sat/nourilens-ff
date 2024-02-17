@@ -80,7 +80,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'receipts';
+  String _currentPageName = 'dashboard';
   late Widget? _currentPage;
 
   @override
@@ -93,8 +93,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'receipts': const ReceiptsWidget(),
       'dashboard': const DashboardWidget(),
+      'receipts': const ReceiptsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -115,14 +115,6 @@ class _NavBarPageState extends State<NavBarPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.receipt_rounded,
-              size: 32.0,
-            ),
-            label: '__receipts',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.dashboard_rounded,
               size: 32.0,
             ),
@@ -131,6 +123,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 32.0,
             ),
             label: '__dashboard',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.receipt_rounded,
+              size: 32.0,
+            ),
+            label: '__receipts',
             tooltip: '',
           )
         ],
