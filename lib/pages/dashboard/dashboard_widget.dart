@@ -1,3 +1,5 @@
+import '/components/nutritional_overview_widget.dart';
+import '/components/successes_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,7 +7,6 @@ import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'dashboard_model.dart';
 export 'dashboard_model.dart';
 
@@ -43,62 +44,42 @@ class _DashboardWidgetState extends State<DashboardWidget>
         ),
       ],
     ),
-    'containerOnPageLoadAnimation1': AnimationInfo(
+    'textOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
-        VisibilityEffect(duration: 1.ms),
+        VisibilityEffect(duration: 600.ms),
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 0.ms,
+          delay: 600.ms,
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
-          delay: 0.ms,
+          delay: 600.ms,
           duration: 600.ms,
-          begin: const Offset(100.0, 0.0),
+          begin: const Offset(0.0, 30.0),
           end: const Offset(0.0, 0.0),
         ),
       ],
     ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
+    'containerOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
-        VisibilityEffect(duration: 1.ms),
+        VisibilityEffect(duration: 1600.ms),
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.8, 0.8),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 180.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
+          delay: 1600.ms,
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
-          delay: 180.ms,
+          delay: 1600.ms,
           duration: 600.ms,
-          begin: const Offset(20.0, 0.0),
+          begin: const Offset(0.0, 70.0),
           end: const Offset(0.0, 0.0),
         ),
       ],
@@ -123,7 +104,27 @@ class _DashboardWidgetState extends State<DashboardWidget>
         ),
       ],
     ),
-    'containerOnPageLoadAnimation3': AnimationInfo(
+    'textOnPageLoadAnimation4': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 180.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 180.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 180.ms,
+          duration: 600.ms,
+          begin: const Offset(20.0, 0.0),
+          end: const Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         VisibilityEffect(duration: 1.ms),
@@ -134,11 +135,71 @@ class _DashboardWidgetState extends State<DashboardWidget>
           begin: 0.0,
           end: 1.0,
         ),
-        MoveEffect(
+        ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(120.0, 0.0),
+          begin: const Offset(0.8, 0.8),
+          end: const Offset(1.0, 1.0),
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1600.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 1600.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 1600.ms,
+          duration: 600.ms,
+          begin: const Offset(0.0, 90.0),
+          end: const Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'textOnPageLoadAnimation5': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 200.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: const Offset(40.0, 0.0),
+          end: const Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'textOnPageLoadAnimation6': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 180.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 180.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 180.ms,
+          duration: 600.ms,
+          begin: const Offset(20.0, 0.0),
           end: const Offset(0.0, 0.0),
         ),
       ],
@@ -163,347 +224,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
         ),
       ],
     ),
-    'textOnPageLoadAnimation4': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 220.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 220.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 220.ms,
-          duration: 600.ms,
-          begin: const Offset(20.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation5': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 240.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 240.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 240.ms,
-          duration: 600.ms,
-          begin: const Offset(40.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation6': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 30.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation5': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 800.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 800.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 800.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 50.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'progressBarOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1200.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 1200.ms,
-          duration: 400.ms,
-          begin: const Offset(0.8, 0.8),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
     'textOnPageLoadAnimation7': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 30.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'dividerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1400.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1400.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 30.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation8': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 30.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation9': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 50.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation6': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 70.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation10': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: const Offset(40.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation11': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 180.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: const Offset(20.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation7': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.8, 0.8),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation8': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 90.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation12': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: const Offset(40.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation13': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 180.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: const Offset(20.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation9': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.8, 0.8),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation14': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         VisibilityEffect(duration: 1.ms),
@@ -615,7 +336,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                   fontFamily: 'Outfit',
                   color: Colors.white,
                 ),
-          ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation14']!),
+          ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation7']!),
           actions: const [],
           centerTitle: false,
           elevation: 0.0,
@@ -662,193 +383,15 @@ class _DashboardWidgetState extends State<DashboardWidget>
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 0.0, 12.0),
-                              child: Container(
-                                height: 120.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      blurRadius: 4.0,
-                                      color: Color(0x1F000000),
-                                      offset: Offset(0.0, 2.0),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    width: 1.0,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 12.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: 60.0,
-                                        height: 60.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Card(
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(40.0),
-                                          ),
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(12.0),
-                                            child: Icon(
-                                              Icons.auto_awesome,
-                                              color: Colors.white,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation2']!),
-                                      Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Reduce Soda Intake',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ).animateOnPageLoad(animationsMap[
-                                                'textOnPageLoadAnimation2']!),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: Text(
-                                                '24 days',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall,
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'textOnPageLoadAnimation3']!),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ).animateOnPageLoad(animationsMap[
-                                  'containerOnPageLoadAnimation1']!),
+                            wrapWithModel(
+                              model: _model.successesModel1,
+                              updateCallback: () => setState(() {}),
+                              child: const SuccessesWidget(),
                             ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 12.0),
-                              child: Container(
-                                height: 120.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      blurRadius: 4.0,
-                                      color: Color(0x1F000000),
-                                      offset: Offset(0.0, 2.0),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    width: 1.0,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 12.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: 60.0,
-                                        height: 60.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Card(
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(40.0),
-                                          ),
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(12.0),
-                                            child: Icon(
-                                              Icons.sports_mma,
-                                              color: Colors.white,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation4']!),
-                                      Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'More Protein',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ).animateOnPageLoad(animationsMap[
-                                                'textOnPageLoadAnimation4']!),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: Text(
-                                                '3,200',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall,
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'textOnPageLoadAnimation5']!),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ).animateOnPageLoad(animationsMap[
-                                  'containerOnPageLoadAnimation3']!),
+                            wrapWithModel(
+                              model: _model.successesModel2,
+                              updateCallback: () => setState(() {}),
+                              child: const SuccessesWidget(),
                             ),
                           ],
                         ),
@@ -863,111 +406,12 @@ class _DashboardWidgetState extends State<DashboardWidget>
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).titleLarge,
                   ).animateOnPageLoad(
-                      animationsMap['textOnPageLoadAnimation6']!),
+                      animationsMap['textOnPageLoadAnimation2']!),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primary,
-                      boxShadow: const [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x1F000000),
-                          offset: Offset(0.0, 2.0),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Stack(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  children: [
-                                    CircularPercentIndicator(
-                                      percent: 0.7,
-                                      radius: 70.0,
-                                      lineWidth: 12.0,
-                                      animation: true,
-                                      animateFromLastPercent: true,
-                                      progressColor: Colors.white,
-                                      backgroundColor: const Color(0x4CFFFFFF),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'progressBarOnPageLoadAnimation']!),
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-5.18, -0.03),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Text(
-                                          '76',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineMedium
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Colors.white,
-                                                fontSize: 80.0,
-                                              ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'textOnPageLoadAnimation7']!),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Divider(
-                            height: 24.0,
-                            thickness: 1.0,
-                            color: Color(0xFF6AA3B8),
-                          ).animateOnPageLoad(
-                              animationsMap['dividerOnPageLoadAnimation']!),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 8.0),
-                            child: Text(
-                              'Nutritional Score',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color: Colors.white,
-                                    fontSize: 20.0,
-                                  ),
-                            ).animateOnPageLoad(
-                                animationsMap['textOnPageLoadAnimation8']!),
-                          ),
-                          Text(
-                            'Monthly Average',
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: const Color(0x9AFFFFFF),
-                                ),
-                          ).animateOnPageLoad(
-                              animationsMap['textOnPageLoadAnimation9']!),
-                        ],
-                      ),
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation5']!),
+                wrapWithModel(
+                  model: _model.nutritionalOverviewModel,
+                  updateCallback: () => setState(() {}),
+                  child: const NutritionalOverviewWidget(),
                 ),
                 Padding(
                   padding:
@@ -1017,7 +461,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ).animateOnPageLoad(animationsMap[
-                                          'textOnPageLoadAnimation10']!),
+                                          'textOnPageLoadAnimation3']!),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
@@ -1026,7 +470,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium,
                                         ).animateOnPageLoad(animationsMap[
-                                            'textOnPageLoadAnimation11']!),
+                                            'textOnPageLoadAnimation4']!),
                                       ),
                                     ],
                                   ),
@@ -1057,7 +501,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                     ),
                                   ),
                                 ).animateOnPageLoad(animationsMap[
-                                    'containerOnPageLoadAnimation7']!),
+                                    'containerOnPageLoadAnimation2']!),
                               ],
                             ),
                           ),
@@ -1065,7 +509,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                       ),
                     ),
                   ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation6']!),
+                      animationsMap['containerOnPageLoadAnimation1']!),
                 ),
                 Padding(
                   padding:
@@ -1115,7 +559,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ).animateOnPageLoad(animationsMap[
-                                          'textOnPageLoadAnimation12']!),
+                                          'textOnPageLoadAnimation5']!),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
@@ -1124,7 +568,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium,
                                         ).animateOnPageLoad(animationsMap[
-                                            'textOnPageLoadAnimation13']!),
+                                            'textOnPageLoadAnimation6']!),
                                       ),
                                     ],
                                   ),
@@ -1155,7 +599,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                     ),
                                   ),
                                 ).animateOnPageLoad(animationsMap[
-                                    'containerOnPageLoadAnimation9']!),
+                                    'containerOnPageLoadAnimation4']!),
                               ],
                             ),
                           ),
@@ -1163,7 +607,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                       ),
                     ),
                   ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation8']!),
+                      animationsMap['containerOnPageLoadAnimation3']!),
                 ),
               ],
             ),
