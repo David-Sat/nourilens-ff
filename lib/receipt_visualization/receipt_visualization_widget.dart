@@ -25,6 +25,8 @@ class _ReceiptVisualizationWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ReceiptVisualizationModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

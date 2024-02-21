@@ -30,6 +30,8 @@ class _ViewReceiptWidgetState extends State<ViewReceiptWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ViewReceiptModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

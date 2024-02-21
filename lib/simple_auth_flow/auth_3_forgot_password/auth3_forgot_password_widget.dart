@@ -62,6 +62,8 @@ class _Auth3ForgotPasswordWidgetState extends State<Auth3ForgotPasswordWidget>
 
     _model.emailController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

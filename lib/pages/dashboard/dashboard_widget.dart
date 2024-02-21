@@ -263,6 +263,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

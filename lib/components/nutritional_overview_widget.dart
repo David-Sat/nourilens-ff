@@ -160,6 +160,8 @@ class _NutritionalOverviewWidgetState extends State<NutritionalOverviewWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

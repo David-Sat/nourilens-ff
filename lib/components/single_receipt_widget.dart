@@ -31,6 +31,8 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SingleReceiptModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -95,7 +97,11 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
-                        dateTimeFormat('MMMEd', widget.receiptData!.date!),
+                        dateTimeFormat(
+                          'MMMEd',
+                          widget.receiptData!.date!,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
                         style: FlutterFlowTheme.of(context).labelMedium,
                       ),
                     ),

@@ -32,6 +32,8 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SingleSuggestionModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -63,6 +63,8 @@ class _Auth3PhoneWidgetState extends State<Auth3PhoneWidget>
     _model.phoneNumberFocusNode ??= FocusNode();
 
     authManager.handlePhoneAuthStateChanges(context);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

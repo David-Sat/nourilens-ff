@@ -118,6 +118,8 @@ class _SuccessesWidgetState extends State<SuccessesWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
