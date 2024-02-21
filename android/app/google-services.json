@@ -1,0 +1,170 @@
+{
+  "project_info": {
+    "project_number": "509574571249",
+    "project_id": "nourilens",
+    "storage_bucket": "nourilens.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509574571249:android:c33541b91b4e5b91e6b550",
+        "android_client_info": {
+          "package_name": "com.example.complete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkRJNqqgcB8ZFETlFXy5q0MPQ_Bv2O5Y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509574571249-6araj167uc84b9ihl2pj1fphnoqnd3pp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nourilens1.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509574571249:android:10e85aad37d6aba9e6b550",
+        "android_client_info": {
+          "package_name": "com.example.nourilens1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509574571249-ti9vsjbcpp0cnanik5bgllprgl9hslp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nourilens1",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkRJNqqgcB8ZFETlFXy5q0MPQ_Bv2O5Y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509574571249-6araj167uc84b9ihl2pj1fphnoqnd3pp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nourilens1.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509574571249:android:090c1e6e61ed4b19e6b550",
+        "android_client_info": {
+          "package_name": "com.mealplanner.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkRJNqqgcB8ZFETlFXy5q0MPQ_Bv2O5Y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509574571249-6araj167uc84b9ihl2pj1fphnoqnd3pp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nourilens1.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509574571249:android:2069c441bb21a3a4e6b550",
+        "android_client_info": {
+          "package_name": "com.mycompany.nourilens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509574571249-arm106drjj3dt9lpk88hh21cihkr1f0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.nourilens",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkRJNqqgcB8ZFETlFXy5q0MPQ_Bv2O5Y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509574571249-dfvn1lc7ugo9s7sfkqreqkcltdro57nl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509574571249-6araj167uc84b9ihl2pj1fphnoqnd3pp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nourilens1.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
