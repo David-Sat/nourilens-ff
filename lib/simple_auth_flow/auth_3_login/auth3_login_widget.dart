@@ -64,6 +64,8 @@ class _Auth3LoginWidgetState extends State<Auth3LoginWidget>
 
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

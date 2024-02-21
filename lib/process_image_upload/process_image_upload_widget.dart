@@ -29,6 +29,8 @@ class _ProcessImageUploadWidgetState extends State<ProcessImageUploadWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProcessImageUploadModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

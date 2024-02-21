@@ -38,6 +38,8 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
         7,
       );
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -329,8 +331,8 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                     wrapWithModel(
                       model: _model.loadingIndicatorModel,
                       updateCallback: () => setState(() {}),
-                      child: const LoadingIndicatorWidget(
-                        parameter1: true,
+                      child: LoadingIndicatorWidget(
+                        parameter1: _model.loading,
                         loadingText: 'Generating Suggestion',
                       ),
                     ),

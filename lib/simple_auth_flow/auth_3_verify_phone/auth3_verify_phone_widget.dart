@@ -64,6 +64,8 @@ class _Auth3VerifyPhoneWidgetState extends State<Auth3VerifyPhoneWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => Auth3VerifyPhoneModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

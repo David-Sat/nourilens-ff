@@ -66,6 +66,8 @@ class _LoadingIndicatorWidgetState extends State<LoadingIndicatorWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

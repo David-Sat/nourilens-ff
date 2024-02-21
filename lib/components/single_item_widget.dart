@@ -31,6 +31,8 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SingleItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
