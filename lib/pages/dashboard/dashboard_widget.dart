@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/components/loading_indicator_widget.dart';
 import '/components/nutritional_overview_widget.dart';
 import '/components/successes_widget.dart';
@@ -10,7 +11,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'dashboard_model.dart';
@@ -276,15 +276,6 @@ class _DashboardWidgetState extends State<DashboardWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -298,8 +289,6 @@ class _DashboardWidgetState extends State<DashboardWidget>
           onPressed: () async {
             final selectedMedia = await selectMediaWithSourceBottomSheet(
               context: context,
-              maxWidth: 2500.00,
-              imageQuality: 100,
               allowPhoto: true,
             );
             if (selectedMedia != null &&
@@ -308,6 +297,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
               setState(() => _model.isDataUploading = true);
               var selectedUploadedFiles = <FFUploadedFile>[];
 
+              var downloadUrls = <String>[];
               try {
                 selectedUploadedFiles = selectedMedia
                     .map((m) => FFUploadedFile(
@@ -318,12 +308,23 @@ class _DashboardWidgetState extends State<DashboardWidget>
                           blurHash: m.blurHash,
                         ))
                     .toList();
+
+                downloadUrls = (await Future.wait(
+                  selectedMedia.map(
+                    (m) async => await uploadData(m.storagePath, m.bytes),
+                  ),
+                ))
+                    .where((u) => u != null)
+                    .map((u) => u!)
+                    .toList();
               } finally {
                 _model.isDataUploading = false;
               }
-              if (selectedUploadedFiles.length == selectedMedia.length) {
+              if (selectedUploadedFiles.length == selectedMedia.length &&
+                  downloadUrls.length == selectedMedia.length) {
                 setState(() {
                   _model.uploadedLocalFile = selectedUploadedFiles.first;
+                  _model.uploadedFileUrl = downloadUrls.first;
                 });
               } else {
                 setState(() {});
@@ -334,21 +335,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
             setState(() {
               _model.loading = true;
             });
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  'Your image is being processed',
-                  style: TextStyle(
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                ),
-                duration: const Duration(milliseconds: 4000),
-                backgroundColor: FlutterFlowTheme.of(context).secondary,
-              ),
-            );
-            _model.receiptData =
-                await FastAPIGeminiGroup.uploadImageUploadPostCall.call(
-              image: _model.uploadedLocalFile,
+            _model.receiptData = await FastAPIGeminiGroup.urlReceiptCall.call(
+              imageUrl: _model.uploadedFileUrl,
             );
             if ((_model.receiptData?.succeeded ?? true)) {
               _model.fullReceipt = await actions.formatReceipt(

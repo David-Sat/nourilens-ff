@@ -18,6 +18,7 @@ class FastAPIGeminiGroup {
       UploadImageUploadPostCall();
   static TestPostTestPostCall testPostTestPostCall = TestPostTestPostCall();
   static SuggestionsCall suggestionsCall = SuggestionsCall();
+  static UrlReceiptCall urlReceiptCall = UrlReceiptCall();
 }
 
 class GetMockItemsMockItemsGetCall {
@@ -121,6 +122,50 @@ class SuggestionsCall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class UrlReceiptCall {
+  Future<ApiCallResponse> call({
+    String? imageUrl = 'test',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "url": "$imageUrl"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'urlReceipt',
+      apiUrl: '${FastAPIGeminiGroup.baseUrl}upload_url',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: true,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<double>? prices(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].price''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  List<int>? nutrivalues(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].nutritionalValue''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
 /// End FastAPIGemini Group Code

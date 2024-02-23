@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'receipts_model.dart';
 export 'receipts_model.dart';
@@ -39,15 +38,6 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -103,8 +93,8 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
                 StreamBuilder<List<FullReceiptRecord>>(
                   stream: queryFullReceiptRecord(
                     parent: currentUserReference,
-                    queryBuilder: (fullReceiptRecord) =>
-                        fullReceiptRecord.orderBy('receipt.date'),
+                    queryBuilder: (fullReceiptRecord) => fullReceiptRecord
+                        .orderBy('receipt.date', descending: true),
                     limit: 20,
                   ),
                   builder: (context, snapshot) {

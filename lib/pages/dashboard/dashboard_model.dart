@@ -19,8 +19,9 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
 
-  // Stores action output result for [Backend Call - API (upload_image_upload_post)] action in FloatingActionButton widget.
+  // Stores action output result for [Backend Call - API (urlReceipt)] action in FloatingActionButton widget.
   ApiCallResponse? receiptData;
   // Stores action output result for [Custom Action - formatReceipt] action in FloatingActionButton widget.
   FullReceiptStruct? fullReceipt;
