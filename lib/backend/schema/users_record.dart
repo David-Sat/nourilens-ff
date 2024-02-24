@@ -65,10 +65,10 @@ class UsersRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
-  // "nutritional_score" field.
-  int? _nutritionalScore;
-  int get nutritionalScore => _nutritionalScore ?? 0;
-  bool hasNutritionalScore() => _nutritionalScore != null;
+  // "meanNutritionalScore" field.
+  int? _meanNutritionalScore;
+  int get meanNutritionalScore => _meanNutritionalScore ?? 0;
+  bool hasMeanNutritionalScore() => _meanNutritionalScore != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -81,7 +81,8 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
     _title = snapshotData['title'] as String?;
-    _nutritionalScore = castToType<int>(snapshotData['nutritional_score']);
+    _meanNutritionalScore =
+        castToType<int>(snapshotData['meanNutritionalScore']);
   }
 
   static CollectionReference get collection =>
@@ -128,7 +129,7 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? title,
-  int? nutritionalScore,
+  int? meanNutritionalScore,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -142,7 +143,7 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'title': title,
-      'nutritional_score': nutritionalScore,
+      'meanNutritionalScore': meanNutritionalScore,
     }.withoutNulls,
   );
 
@@ -164,7 +165,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
         e1?.title == e2?.title &&
-        e1?.nutritionalScore == e2?.nutritionalScore;
+        e1?.meanNutritionalScore == e2?.meanNutritionalScore;
   }
 
   @override
@@ -179,7 +180,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.lastActiveTime,
         e?.role,
         e?.title,
-        e?.nutritionalScore
+        e?.meanNutritionalScore
       ]);
 
   @override

@@ -61,7 +61,7 @@ class _ReceiptsOverviewWidgetState extends State<ReceiptsOverviewWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pushNamed('dashboard');
             },
           ),
           actions: const [],

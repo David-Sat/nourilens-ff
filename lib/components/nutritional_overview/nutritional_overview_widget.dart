@@ -121,26 +121,6 @@ class _NutritionalOverviewWidgetState extends State<NutritionalOverviewWidget>
         ),
       ],
     ),
-    'textOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 50.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
   };
 
   @override
@@ -180,7 +160,15 @@ class _NutritionalOverviewWidgetState extends State<NutritionalOverviewWidget>
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).primary,
+          color: () {
+            if (FFAppState().meanNutritionalScore >= 7) {
+              return FlutterFlowTheme.of(context).secondary;
+            } else if (FFAppState().meanNutritionalScore <= 4) {
+              return FlutterFlowTheme.of(context).error;
+            } else {
+              return FlutterFlowTheme.of(context).warning;
+            }
+          }(),
           boxShadow: const [
             BoxShadow(
               blurRadius: 4.0,
@@ -207,7 +195,7 @@ class _NutritionalOverviewWidgetState extends State<NutritionalOverviewWidget>
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       children: [
                         CircularPercentIndicator(
-                          percent: 0.7,
+                          percent: FFAppState().meanNutritionalScore / 10,
                           radius: 70.0,
                           lineWidth: 12.0,
                           animation: true,
@@ -222,7 +210,7 @@ class _NutritionalOverviewWidgetState extends State<NutritionalOverviewWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 8.0),
                             child: Text(
-                              '76',
+                              FFAppState().meanNutritionalScore.toString(),
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -255,13 +243,6 @@ class _NutritionalOverviewWidgetState extends State<NutritionalOverviewWidget>
                       ),
                 ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation2']!),
               ),
-              Text(
-                'Monthly Average',
-                style: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Readex Pro',
-                      color: const Color(0x9AFFFFFF),
-                    ),
-              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation3']!),
             ],
           ),
         ),

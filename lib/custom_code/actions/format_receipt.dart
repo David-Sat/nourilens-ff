@@ -28,6 +28,17 @@ Future<FullReceiptStruct> formatReceipt(
   int averageNutritionalValue = itemList != null && itemList.isNotEmpty
       ? (totalNutritionalValue ~/ itemList.length)
       : 0;
+  FFAppState().update(() {
+    FFAppState().numberOfItems += itemList!.length;
+  });
+  FFAppState().update(() {
+    FFAppState().sumOfItemsNutritionalScore += totalNutritionalValue;
+  });
+  FFAppState().update(() {
+    FFAppState().meanNutritionalScore =
+        FFAppState().sumOfItemsNutritionalScore ~/ FFAppState().numberOfItems;
+  });
+  ;
 
   return FullReceiptStruct(
     receiptItems:
