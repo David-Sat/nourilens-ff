@@ -1,9 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/loading_indicator_widget.dart';
-import '/components/nutritional_overview_widget.dart';
-import '/components/successes_widget.dart';
+import '/components/loading_indicator/loading_indicator_widget.dart';
+import '/components/nutritional_overview/nutritional_overview_widget.dart';
+import '/components/successes/successes_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dashboard_widget.dart' show DashboardWidget;
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/components/single_item_widget.dart';
+import '/components/single_item/single_item_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -89,7 +89,11 @@ class _ViewReceiptWidgetState extends State<ViewReceiptWidget> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
                   child: Text(
-                    'Below are your most recent receipts',
+                    'Below are the items bought on  ${dateTimeFormat(
+                      'MMMMEEEEd',
+                      widget.receipt?.receipt.date,
+                      locale: FFLocalizations.of(context).languageCode,
+                    )}',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).labelMedium,
                   ),

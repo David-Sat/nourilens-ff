@@ -2,9 +2,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/loading_indicator_widget.dart';
-import '/components/nutritional_overview_widget.dart';
-import '/components/successes_widget.dart';
+import '/components/loading_indicator/loading_indicator_widget.dart';
+import '/components/nutritional_overview/nutritional_overview_widget.dart';
+import '/components/successes/successes_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -519,7 +519,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('receipts');
+                              context.pushNamed('receipts_overview');
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,

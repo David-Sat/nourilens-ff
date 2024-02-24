@@ -1,4 +1,4 @@
-import '/components/single_item_widget.dart';
+import '/components/single_item/single_item_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'view_receipt_widget.dart' show ViewReceiptWidget;
 import 'package:flutter/material.dart';

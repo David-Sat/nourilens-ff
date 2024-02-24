@@ -1,5 +1,6 @@
 // Export pages
-export '/pages/receipts/receipts_widget.dart' show ReceiptsWidget;
+export '/pages/receipts_overview/receipts_overview_widget.dart'
+    show ReceiptsOverviewWidget;
 export '/pages/dashboard/dashboard_widget.dart' show DashboardWidget;
 export '/simple_auth_flow/auth_3_create/auth3_create_widget.dart'
     show Auth3CreateWidget;

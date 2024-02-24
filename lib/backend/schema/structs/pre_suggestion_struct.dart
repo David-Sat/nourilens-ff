@@ -8,21 +8,19 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class SuggestionStruct extends FFFirebaseStruct {
-  SuggestionStruct({
+class PreSuggestionStruct extends FFFirebaseStruct {
+  PreSuggestionStruct({
     String? prevItem,
     double? prevItemPrice,
     String? newItem,
     double? newItemPrice,
     String? description,
-    DateTime? date,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _prevItem = prevItem,
         _prevItemPrice = prevItemPrice,
         _newItem = newItem,
         _newItemPrice = newItemPrice,
         _description = description,
-        _date = date,
         super(firestoreUtilData);
 
   // "prevItem" field.
@@ -59,24 +57,17 @@ class SuggestionStruct extends FFFirebaseStruct {
   set description(String? val) => _description = val;
   bool hasDescription() => _description != null;
 
-  // "date" field.
-  DateTime? _date;
-  DateTime? get date => _date;
-  set date(DateTime? val) => _date = val;
-  bool hasDate() => _date != null;
-
-  static SuggestionStruct fromMap(Map<String, dynamic> data) =>
-      SuggestionStruct(
+  static PreSuggestionStruct fromMap(Map<String, dynamic> data) =>
+      PreSuggestionStruct(
         prevItem: data['prevItem'] as String?,
         prevItemPrice: castToType<double>(data['prevItemPrice']),
         newItem: data['newItem'] as String?,
         newItemPrice: castToType<double>(data['newItemPrice']),
         description: data['description'] as String?,
-        date: data['date'] as DateTime?,
       );
 
-  static SuggestionStruct? maybeFromMap(dynamic data) => data is Map
-      ? SuggestionStruct.fromMap(data.cast<String, dynamic>())
+  static PreSuggestionStruct? maybeFromMap(dynamic data) => data is Map
+      ? PreSuggestionStruct.fromMap(data.cast<String, dynamic>())
       : null;
 
   Map<String, dynamic> toMap() => {
@@ -85,7 +76,6 @@ class SuggestionStruct extends FFFirebaseStruct {
         'newItem': _newItem,
         'newItemPrice': _newItemPrice,
         'description': _description,
-        'date': _date,
       }.withoutNulls;
 
   @override
@@ -110,14 +100,10 @@ class SuggestionStruct extends FFFirebaseStruct {
           _description,
           ParamType.String,
         ),
-        'date': serializeParam(
-          _date,
-          ParamType.DateTime,
-        ),
       }.withoutNulls;
 
-  static SuggestionStruct fromSerializableMap(Map<String, dynamic> data) =>
-      SuggestionStruct(
+  static PreSuggestionStruct fromSerializableMap(Map<String, dynamic> data) =>
+      PreSuggestionStruct(
         prevItem: deserializeParam(
           data['prevItem'],
           ParamType.String,
@@ -143,51 +129,43 @@ class SuggestionStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        date: deserializeParam(
-          data['date'],
-          ParamType.DateTime,
-          false,
-        ),
       );
 
   @override
-  String toString() => 'SuggestionStruct(${toMap()})';
+  String toString() => 'PreSuggestionStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
-    return other is SuggestionStruct &&
+    return other is PreSuggestionStruct &&
         prevItem == other.prevItem &&
         prevItemPrice == other.prevItemPrice &&
         newItem == other.newItem &&
         newItemPrice == other.newItemPrice &&
-        description == other.description &&
-        date == other.date;
+        description == other.description;
   }
 
   @override
-  int get hashCode => const ListEquality().hash(
-      [prevItem, prevItemPrice, newItem, newItemPrice, description, date]);
+  int get hashCode => const ListEquality()
+      .hash([prevItem, prevItemPrice, newItem, newItemPrice, description]);
 }
 
-SuggestionStruct createSuggestionStruct({
+PreSuggestionStruct createPreSuggestionStruct({
   String? prevItem,
   double? prevItemPrice,
   String? newItem,
   double? newItemPrice,
   String? description,
-  DateTime? date,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
   bool delete = false,
 }) =>
-    SuggestionStruct(
+    PreSuggestionStruct(
       prevItem: prevItem,
       prevItemPrice: prevItemPrice,
       newItem: newItem,
       newItemPrice: newItemPrice,
       description: description,
-      date: date,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -196,61 +174,66 @@ SuggestionStruct createSuggestionStruct({
       ),
     );
 
-SuggestionStruct? updateSuggestionStruct(
-  SuggestionStruct? suggestion, {
+PreSuggestionStruct? updatePreSuggestionStruct(
+  PreSuggestionStruct? preSuggestion, {
   bool clearUnsetFields = true,
   bool create = false,
 }) =>
-    suggestion
+    preSuggestion
       ?..firestoreUtilData = FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
       );
 
-void addSuggestionStructData(
+void addPreSuggestionStructData(
   Map<String, dynamic> firestoreData,
-  SuggestionStruct? suggestion,
+  PreSuggestionStruct? preSuggestion,
   String fieldName, [
   bool forFieldValue = false,
 ]) {
   firestoreData.remove(fieldName);
-  if (suggestion == null) {
+  if (preSuggestion == null) {
     return;
   }
-  if (suggestion.firestoreUtilData.delete) {
+  if (preSuggestion.firestoreUtilData.delete) {
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
   final clearFields =
-      !forFieldValue && suggestion.firestoreUtilData.clearUnsetFields;
+      !forFieldValue && preSuggestion.firestoreUtilData.clearUnsetFields;
   if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
-  final suggestionData = getSuggestionFirestoreData(suggestion, forFieldValue);
-  final nestedData = suggestionData.map((k, v) => MapEntry('$fieldName.$k', v));
+  final preSuggestionData =
+      getPreSuggestionFirestoreData(preSuggestion, forFieldValue);
+  final nestedData =
+      preSuggestionData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final mergeFields = suggestion.firestoreUtilData.create || clearFields;
+  final mergeFields = preSuggestion.firestoreUtilData.create || clearFields;
   firestoreData
       .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
-Map<String, dynamic> getSuggestionFirestoreData(
-  SuggestionStruct? suggestion, [
+Map<String, dynamic> getPreSuggestionFirestoreData(
+  PreSuggestionStruct? preSuggestion, [
   bool forFieldValue = false,
 ]) {
-  if (suggestion == null) {
+  if (preSuggestion == null) {
     return {};
   }
-  final firestoreData = mapToFirestore(suggestion.toMap());
+  final firestoreData = mapToFirestore(preSuggestion.toMap());
 
   // Add any Firestore field values
-  suggestion.firestoreUtilData.fieldValues
+  preSuggestion.firestoreUtilData.fieldValues
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
 }
 
-List<Map<String, dynamic>> getSuggestionListFirestoreData(
-  List<SuggestionStruct>? suggestions,
+List<Map<String, dynamic>> getPreSuggestionListFirestoreData(
+  List<PreSuggestionStruct>? preSuggestions,
 ) =>
-    suggestions?.map((e) => getSuggestionFirestoreData(e, true)).toList() ?? [];
+    preSuggestions
+        ?.map((e) => getPreSuggestionFirestoreData(e, true))
+        .toList() ??
+    [];

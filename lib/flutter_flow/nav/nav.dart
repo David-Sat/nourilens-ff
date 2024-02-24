@@ -83,11 +83,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? const NavBarPage() : const Auth3LoginWidget(),
         ),
         FFRoute(
-          name: 'receipts',
+          name: 'receipts_overview',
           path: '/receipts',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'receipts')
-              : const ReceiptsWidget(),
+              ? const NavBarPage(initialPage: 'receipts_overview')
+              : const ReceiptsOverviewWidget(),
         ),
         FFRoute(
           name: 'dashboard',
