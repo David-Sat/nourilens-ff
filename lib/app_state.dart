@@ -79,4 +79,22 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInSuggestions(int index, SuggestionStruct value) {
     _suggestions.insert(index, value);
   }
+
+  int _numberOfItems = 0;
+  int get numberOfItems => _numberOfItems;
+  set numberOfItems(int value) {
+    _numberOfItems = value;
+  }
+
+  int _sumOfItemsNutritionalScore = 0;
+  int get sumOfItemsNutritionalScore => _sumOfItemsNutritionalScore;
+  set sumOfItemsNutritionalScore(int value) {
+    _sumOfItemsNutritionalScore = value;
+  }
+
+  int _meanNutritionalScore = 0;
+  int get meanNutritionalScore => _meanNutritionalScore;
+  set meanNutritionalScore(int value) {
+    _meanNutritionalScore = value;
+  }
 }

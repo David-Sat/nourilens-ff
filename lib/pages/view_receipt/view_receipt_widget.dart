@@ -65,7 +65,7 @@ class _ViewReceiptWidgetState extends State<ViewReceiptWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pushNamed('receipts_overview');
             },
           ),
           actions: const [],
