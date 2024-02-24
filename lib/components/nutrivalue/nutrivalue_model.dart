@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'single_receipt_widget.dart' show SingleReceiptWidget;
+import 'nutrivalue_widget.dart' show NutrivalueWidget;
 import 'package:flutter/material.dart';
 
-class SingleReceiptModel extends FlutterFlowModel<SingleReceiptWidget> {
+class NutrivalueModel extends FlutterFlowModel<NutrivalueWidget> {
   /// Initialization and disposal methods.
 
   @override

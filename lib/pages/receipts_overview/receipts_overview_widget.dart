@@ -1,31 +1,30 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/single_receipt_widget.dart';
+import '/components/single_receipt/single_receipt_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'receipts_model.dart';
-export 'receipts_model.dart';
+import 'receipts_overview_model.dart';
+export 'receipts_overview_model.dart';
 
-class ReceiptsWidget extends StatefulWidget {
-  const ReceiptsWidget({super.key});
+class ReceiptsOverviewWidget extends StatefulWidget {
+  const ReceiptsOverviewWidget({super.key});
 
   @override
-  State<ReceiptsWidget> createState() => _ReceiptsWidgetState();
+  State<ReceiptsOverviewWidget> createState() => _ReceiptsOverviewWidgetState();
 }
 
-class _ReceiptsWidgetState extends State<ReceiptsWidget> {
-  late ReceiptsModel _model;
+class _ReceiptsOverviewWidgetState extends State<ReceiptsOverviewWidget> {
+  late ReceiptsOverviewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ReceiptsModel());
+    _model = createModel(context, () => ReceiptsOverviewModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -39,15 +38,6 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -103,8 +93,8 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
                 StreamBuilder<List<FullReceiptRecord>>(
                   stream: queryFullReceiptRecord(
                     parent: currentUserReference,
-                    queryBuilder: (fullReceiptRecord) =>
-                        fullReceiptRecord.orderBy('receipt.date'),
+                    queryBuilder: (fullReceiptRecord) => fullReceiptRecord
+                        .orderBy('receipt.date', descending: true),
                     limit: 20,
                   ),
                   builder: (context, snapshot) {

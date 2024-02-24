@@ -1,15 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/loading_indicator_widget.dart';
-import '/components/single_suggestion_widget.dart';
+import '/components/loading_indicator/loading_indicator_widget.dart';
+import '/components/single_suggestion/single_suggestion_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'suggestions_model.dart';
 export 'suggestions_model.dart';
@@ -51,15 +50,6 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return StreamBuilder<List<FullReceiptRecord>>(
@@ -152,6 +142,9 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                         child: StreamBuilder<List<SuggestionsRecord>>(
                           stream: querySuggestionsRecord(
                             parent: currentUserReference,
+                            queryBuilder: (suggestionsRecord) =>
+                                suggestionsRecord.orderBy('suggestions.date',
+                                    descending: true),
                             limit: 6,
                           ),
                           builder: (context, snapshot) {
@@ -224,6 +217,38 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                                 itemsString: _model.itemsLow,
                               );
                               if ((_model.apiSuggestions?.succeeded ?? true)) {
+                                await SuggestionsRecord.createDoc(
+                                        currentUserReference!)
+                                    .set(createSuggestionsRecordData(
+                                  suggestions: createSuggestionStruct(
+                                    prevItem: PreSuggestionStruct.maybeFromMap(
+                                            (_model.apiSuggestions?.jsonBody ??
+                                                ''))
+                                        ?.prevItem,
+                                    prevItemPrice:
+                                        PreSuggestionStruct.maybeFromMap((_model
+                                                    .apiSuggestions?.jsonBody ??
+                                                ''))
+                                            ?.prevItemPrice,
+                                    newItem: PreSuggestionStruct.maybeFromMap(
+                                            (_model.apiSuggestions?.jsonBody ??
+                                                ''))
+                                        ?.newItem,
+                                    newItemPrice:
+                                        PreSuggestionStruct.maybeFromMap((_model
+                                                    .apiSuggestions?.jsonBody ??
+                                                ''))
+                                            ?.newItemPrice,
+                                    description:
+                                        PreSuggestionStruct.maybeFromMap((_model
+                                                    .apiSuggestions?.jsonBody ??
+                                                ''))
+                                            ?.description,
+                                    date: getCurrentTimestamp,
+                                    clearUnsetFields: false,
+                                    create: true,
+                                  ),
+                                ));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
@@ -238,18 +263,6 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
                                 );
-
-                                await SuggestionsRecord.createDoc(
-                                        currentUserReference!)
-                                    .set(createSuggestionsRecordData(
-                                  suggestions: updateSuggestionStruct(
-                                    SuggestionStruct.maybeFromMap(
-                                        (_model.apiSuggestions?.jsonBody ??
-                                            '')),
-                                    clearUnsetFields: false,
-                                    create: true,
-                                  ),
-                                ));
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

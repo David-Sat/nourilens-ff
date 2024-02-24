@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/nutrivalue/nutrivalue_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -74,19 +75,26 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RichText(
-                      textScaleFactor: MediaQuery.of(context).textScaleFactor,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: valueOrDefault<String>(
-                              widget.itemData?.itemName,
-                              'item',
-                            ),
-                            style: const TextStyle(),
-                          )
-                        ],
-                        style: FlutterFlowTheme.of(context).bodyLarge,
+                    Container(
+                      width: 150.0,
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: valueOrDefault<String>(
+                                widget.itemData?.itemName,
+                                'item',
+                              ),
+                              style: const TextStyle(),
+                            )
+                          ],
+                          style: FlutterFlowTheme.of(context).bodyLarge,
+                        ),
                       ),
                     ),
                   ],
@@ -113,38 +121,11 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                    child: Container(
-                      height: 32.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent1,
-                        borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).primary,
-                          width: 2.0,
-                        ),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 12.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.itemData?.nutritionalValue.toString(),
-                              '70',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                ),
-                          ),
-                        ),
-                      ),
+                  wrapWithModel(
+                    model: _model.nutrivalueModel,
+                    updateCallback: () => setState(() {}),
+                    child: NutrivalueWidget(
+                      parameter1: widget.itemData?.nutritionalValue,
                     ),
                   ),
                 ],

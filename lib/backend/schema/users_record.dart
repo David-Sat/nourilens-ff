@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
@@ -64,6 +65,11 @@ class UsersRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
+  // "nutritional_score" field.
+  int? _nutritionalScore;
+  int get nutritionalScore => _nutritionalScore ?? 0;
+  bool hasNutritionalScore() => _nutritionalScore != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -75,6 +81,7 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
     _title = snapshotData['title'] as String?;
+    _nutritionalScore = castToType<int>(snapshotData['nutritional_score']);
   }
 
   static CollectionReference get collection =>
@@ -121,6 +128,7 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? title,
+  int? nutritionalScore,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -134,6 +142,7 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'title': title,
+      'nutritional_score': nutritionalScore,
     }.withoutNulls,
   );
 
@@ -154,7 +163,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.shortDescription == e2?.shortDescription &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
-        e1?.title == e2?.title;
+        e1?.title == e2?.title &&
+        e1?.nutritionalScore == e2?.nutritionalScore;
   }
 
   @override
@@ -168,7 +178,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.shortDescription,
         e?.lastActiveTime,
         e?.role,
-        e?.title
+        e?.title,
+        e?.nutritionalScore
       ]);
 
   @override

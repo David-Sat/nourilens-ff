@@ -72,6 +72,7 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Expanded(
+                    flex: 2,
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
@@ -101,18 +102,18 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: Text(
-                      '>',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            fontSize: 20.0,
-                          ),
-                    ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.arrow_forward_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ],
                   ),
                   Expanded(
+                    flex: 2,
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 4.0, 0.0),
@@ -142,38 +143,38 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                       ),
                     ),
                   ),
-                  const Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                      child: Icon(
-                        Icons.chevron_right_rounded,
-                        color: Color(0xFF57636C),
-                        size: 24.0,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-              child: Container(
-                width: double.infinity,
-                height: 30.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: AutoSizeText(
-                  valueOrDefault<String>(
-                    widget.foodSuggestion?.description,
-                    'default',
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 30.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: AutoSizeText(
+                          valueOrDefault<String>(
+                            widget.foodSuggestion?.description,
+                            'default',
+                          ),
+                          textAlign: TextAlign.start,
+                          maxLines: 2,
+                          style: FlutterFlowTheme.of(context).bodySmall,
+                        ),
+                      ),
+                    ),
                   ),
-                  textAlign: TextAlign.start,
-                  maxLines: 2,
-                  style: FlutterFlowTheme.of(context).bodySmall,
-                ),
+                ],
               ),
             ),
           ],

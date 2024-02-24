@@ -1,9 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/loading_indicator_widget.dart';
-import '/components/nutritional_overview_widget.dart';
-import '/components/successes_widget.dart';
+import '/components/loading_indicator/loading_indicator_widget.dart';
+import '/components/nutritional_overview/nutritional_overview_widget.dart';
+import '/components/successes/successes_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dashboard_widget.dart' show DashboardWidget;
 import 'package:flutter/material.dart';
@@ -19,8 +19,9 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
 
-  // Stores action output result for [Backend Call - API (upload_image_upload_post)] action in FloatingActionButton widget.
+  // Stores action output result for [Backend Call - API (urlReceipt)] action in FloatingActionButton widget.
   ApiCallResponse? receiptData;
   // Stores action output result for [Custom Action - formatReceipt] action in FloatingActionButton widget.
   FullReceiptStruct? fullReceipt;

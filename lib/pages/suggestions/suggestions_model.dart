@@ -1,6 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/loading_indicator_widget.dart';
-import '/components/single_suggestion_widget.dart';
+import '/components/loading_indicator/loading_indicator_widget.dart';
+import '/components/single_suggestion/single_suggestion_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'suggestions_widget.dart' show SuggestionsWidget;
 import 'package:flutter/material.dart';

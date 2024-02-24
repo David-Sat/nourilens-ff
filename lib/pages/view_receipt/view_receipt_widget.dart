@@ -1,10 +1,9 @@
 import '/backend/backend.dart';
-import '/components/single_item_widget.dart';
+import '/components/single_item/single_item_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'view_receipt_model.dart';
 export 'view_receipt_model.dart';
@@ -43,15 +42,6 @@ class _ViewReceiptWidgetState extends State<ViewReceiptWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -99,7 +89,11 @@ class _ViewReceiptWidgetState extends State<ViewReceiptWidget> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
                   child: Text(
-                    'Below are your most recent receipts',
+                    'Below are the items bought on  ${dateTimeFormat(
+                      'MMMMEEEEd',
+                      widget.receipt?.receipt.date,
+                      locale: FFLocalizations.of(context).languageCode,
+                    )}',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).labelMedium,
                   ),

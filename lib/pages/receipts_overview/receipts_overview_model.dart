@@ -1,9 +1,9 @@
-import '/components/single_receipt_widget.dart';
+import '/components/single_receipt/single_receipt_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'receipts_widget.dart' show ReceiptsWidget;
+import 'receipts_overview_widget.dart' show ReceiptsOverviewWidget;
 import 'package:flutter/material.dart';
 
-class ReceiptsModel extends FlutterFlowModel<ReceiptsWidget> {
+class ReceiptsOverviewModel extends FlutterFlowModel<ReceiptsOverviewWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
