@@ -168,7 +168,7 @@ class _Auth3ForgotPasswordWidgetState extends State<Auth3ForgotPasswordWidget>
                                         ),
                                       ),
                                       Text(
-                                        'flow.io',
+                                        'Nourilens',
                                         style: FlutterFlowTheme.of(context)
                                             .displaySmall,
                                       ),

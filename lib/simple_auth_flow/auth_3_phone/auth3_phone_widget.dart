@@ -169,7 +169,7 @@ class _Auth3PhoneWidgetState extends State<Auth3PhoneWidget>
                                         ),
                                       ),
                                       Text(
-                                        'flow.io',
+                                        'Nourilens',
                                         style: FlutterFlowTheme.of(context)
                                             .displaySmall,
                                       ),
