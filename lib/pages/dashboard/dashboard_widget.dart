@@ -460,12 +460,19 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                 wrapWithModel(
                                   model: _model.successesModel1,
                                   updateCallback: () => setState(() {}),
-                                  child: const SuccessesWidget(),
+                                  child: const SuccessesWidget(
+                                    successDescription:
+                                        'by David, David, Merve, and Tayfun ',
+                                    success: 'Changing Habits',
+                                  ),
                                 ),
                                 wrapWithModel(
                                   model: _model.successesModel2,
                                   updateCallback: () => setState(() {}),
-                                  child: const SuccessesWidget(),
+                                  child: const SuccessesWidget(
+                                    successDescription: 'Your NouriLens Streak',
+                                    success: '1 Day',
+                                  ),
                                 ),
                               ],
                             ),

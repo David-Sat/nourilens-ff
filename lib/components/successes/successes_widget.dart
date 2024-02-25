@@ -8,7 +8,14 @@ import 'successes_model.dart';
 export 'successes_model.dart';
 
 class SuccessesWidget extends StatefulWidget {
-  const SuccessesWidget({super.key});
+  const SuccessesWidget({
+    super.key,
+    required this.successDescription,
+    required this.success,
+  });
+
+  final String? successDescription;
+  final String? success;
 
   @override
   State<SuccessesWidget> createState() => _SuccessesWidgetState();
@@ -191,7 +198,7 @@ class _SuccessesWidgetState extends State<SuccessesWidget>
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        _model.successDescription,
+                        widget.successDescription,
                         'Days without Soda',
                       ),
                       style: FlutterFlowTheme.of(context).labelMedium,
@@ -202,8 +209,8 @@ class _SuccessesWidgetState extends State<SuccessesWidget>
                           const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Text(
                         valueOrDefault<String>(
-                          _model.successText,
-                          '24 days',
+                          widget.success,
+                          '24 Days',
                         ),
                         style: FlutterFlowTheme.of(context).displaySmall,
                       ).animateOnPageLoad(
