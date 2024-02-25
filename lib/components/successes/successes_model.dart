@@ -3,12 +3,6 @@ import 'successes_widget.dart' show SuccessesWidget;
 import 'package:flutter/material.dart';
 
 class SuccessesModel extends FlutterFlowModel<SuccessesWidget> {
-  ///  Local state fields for this component.
-
-  String successDescription = 'Days without Soda';
-
-  String successText = '24 Days';
-
   /// Initialization and disposal methods.
 
   @override
