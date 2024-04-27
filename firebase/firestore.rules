@@ -5,28 +5,28 @@ service cloud.firestore {
       allow create: if request.auth.uid == document;
       allow read: if request.auth.uid == document;
       allow write: if request.auth.uid == document;
-      allow delete: if false;
+      allow delete: if request.auth.uid == document;
     }
 
     match /users/{parent}/receipts/{document} {
       allow create: if request.auth.uid == parent;
       allow read: if request.auth.uid == parent;
       allow write: if request.auth.uid == parent;
-      allow delete: if false;
+      allow delete: if request.auth.uid == parent;
     }
 
     match /users/{parent}/full_receipt/{document} {
       allow create: if request.auth.uid == parent;
       allow read: if request.auth.uid == parent;
       allow write: if request.auth.uid == parent;
-      allow delete: if false;
+      allow delete: if request.auth.uid == parent;
     }
 
     match /users/{parent}/suggestions/{document} {
       allow create: if request.auth.uid == parent;
       allow read: if request.auth.uid == parent;
       allow write: if request.auth.uid == parent;
-      allow delete: if false;
+      allow delete: if request.auth.uid == parent;
     }
   }
 }

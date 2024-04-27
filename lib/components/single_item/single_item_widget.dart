@@ -3,7 +3,6 @@ import '/components/nutrivalue/nutrivalue_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'single_item_model.dart';
 export 'single_item_model.dart';
 
@@ -45,8 +44,6 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 0.0),
       child: Container(
@@ -82,7 +79,7 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: RichText(
-                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
+                        textScaler: MediaQuery.of(context).textScaler,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -93,7 +90,11 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
                               style: const TextStyle(),
                             )
                           ],
-                          style: FlutterFlowTheme.of(context).bodyLarge,
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ),
@@ -118,7 +119,11 @@ class _SingleItemWidgetState extends State<SingleItemWidget> {
                         '50',
                       ),
                       textAlign: TextAlign.end,
-                      style: FlutterFlowTheme.of(context).headlineSmall,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0.0,
+                              ),
                     ),
                   ),
                   wrapWithModel(

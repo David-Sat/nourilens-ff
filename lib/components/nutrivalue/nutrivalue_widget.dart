@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'nutrivalue_model.dart';
 export 'nutrivalue_model.dart';
 
@@ -43,8 +42,6 @@ class _NutrivalueWidgetState extends State<NutrivalueWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
       child: Container(
@@ -73,6 +70,7 @@ class _NutrivalueWidgetState extends State<NutrivalueWidget> {
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Readex Pro',
                     color: FlutterFlowTheme.of(context).primaryText,
+                    letterSpacing: 0.0,
                   ),
             ),
           ),

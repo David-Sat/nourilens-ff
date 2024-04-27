@@ -10,8 +10,6 @@ class ViewReceiptModel extends FlutterFlowModel<ViewReceiptWidget> {
   // Models for single_item dynamic component.
   late FlutterFlowDynamicModels<SingleItemModel> singleItemModels;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     singleItemModels = FlutterFlowDynamicModels(() => SingleItemModel());
@@ -22,8 +20,4 @@ class ViewReceiptModel extends FlutterFlowModel<ViewReceiptWidget> {
     unfocusNode.dispose();
     singleItemModels.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -10,11 +10,9 @@ class Auth3ForgotPasswordModel
   final unfocusNode = FocusNode();
   // State field(s) for email widget.
   FocusNode? emailFocusNode;
-  TextEditingController? emailController;
+  TextEditingController? emailTextController;
   final emailMask = MaskTextInputFormatter(mask: '(###) ###-####');
-  String? Function(BuildContext, String?)? emailControllerValidator;
-
-  /// Initialization and disposal methods.
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -23,10 +21,6 @@ class Auth3ForgotPasswordModel
   void dispose() {
     unfocusNode.dispose();
     emailFocusNode?.dispose();
-    emailController?.dispose();
+    emailTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

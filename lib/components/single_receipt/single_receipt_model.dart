@@ -9,8 +9,6 @@ class SingleReceiptModel extends FlutterFlowModel<SingleReceiptWidget> {
   // Model for nutrivalue component.
   late NutrivalueModel nutrivalueModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     nutrivalueModel = createModel(context, () => NutrivalueModel());
@@ -20,8 +18,4 @@ class SingleReceiptModel extends FlutterFlowModel<SingleReceiptWidget> {
   void dispose() {
     nutrivalueModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

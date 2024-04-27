@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'loading_indicator_model.dart';
 export 'loading_indicator_model.dart';
 
@@ -26,28 +25,7 @@ class _LoadingIndicatorWidgetState extends State<LoadingIndicatorWidget>
     with TickerProviderStateMixin {
   late LoadingIndicatorModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1600.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 1600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 90.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -60,6 +38,28 @@ class _LoadingIndicatorWidgetState extends State<LoadingIndicatorWidget>
     super.initState();
     _model = createModel(context, () => LoadingIndicatorModel());
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1600.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 1600.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 1600.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 90.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -79,8 +79,6 @@ class _LoadingIndicatorWidgetState extends State<LoadingIndicatorWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Visibility(
       visible: widget.parameter1,
       child: Opacity(
@@ -98,7 +96,10 @@ class _LoadingIndicatorWidgetState extends State<LoadingIndicatorWidget>
                   BoxShadow(
                     blurRadius: 4.0,
                     color: Color(0x1F000000),
-                    offset: Offset(0.0, 2.0),
+                    offset: Offset(
+                      0.0,
+                      2.0,
+                    ),
                   )
                 ],
                 borderRadius: BorderRadius.circular(16.0),
@@ -126,7 +127,10 @@ class _LoadingIndicatorWidgetState extends State<LoadingIndicatorWidget>
                     alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Text(
                       widget.loadingText,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                 ],
