@@ -28,7 +28,7 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in dashboard widget.
-  List<ReceiptsRecord>? outputListUsers;
+  List<FullReceiptRecord>? outputListUsers;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));

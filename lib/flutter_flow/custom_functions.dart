@@ -14,7 +14,7 @@ import '/backend/schema/structs/index.dart';
 import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-double listAverage(List<FullReceiptStruct>? receipts) {
+double? listAverage(List<FullReceiptStruct>? receipts) {
   int suma = 0;
   int contador = 0;
 
@@ -24,6 +24,21 @@ double listAverage(List<FullReceiptStruct>? receipts) {
         suma += item.nutritionalValue;
         contador += 1;
       }
+    }
+    return (suma / contador) / 10;
+  } else {
+    return 4.0 / 10;
+  }
+}
+
+double listAverageReceipts(List<ReceiptItemsStruct>? receipt) {
+  int suma = 0;
+  int contador = 0;
+
+  if (receipt != null && receipt.isNotEmpty) {
+    for (ReceiptItemsStruct item in receipt) {
+      suma += item.nutritionalValue;
+      contador += 1;
     }
     return (suma / contador) / 10;
   } else {

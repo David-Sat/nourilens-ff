@@ -85,6 +85,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'receipts_overview',
           path: '/receipts',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'receipts_overview')
               : const ReceiptsOverviewWidget(),
@@ -92,6 +93,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'dashboard',
           path: '/dashboard',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'dashboard')
               : const DashboardWidget(),
@@ -124,6 +126,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'suggestions',
           path: '/suggestions',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'suggestions')
               : const SuggestionsWidget(),
@@ -141,6 +144,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'view_receipt',
           path: '/receipt_detail',
+          requireAuth: true,
           asyncParams: {
             'receipt': getDoc(
                 ['users', 'full_receipt'], FullReceiptRecord.fromSnapshot),
@@ -151,6 +155,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'profile',
+          path: '/profile',
+          builder: (context, params) => const ProfileWidget(),
+        ),
+        FFRoute(
+          name: 'edit_profile',
+          path: '/editProfile',
+          builder: (context, params) => const EditProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

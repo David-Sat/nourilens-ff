@@ -40,7 +40,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.outputListUsers = await queryReceiptsRecordOnce();
+      _model.outputListUsers = await queryFullReceiptRecordOnce();
       setState(() {
         _model.listFullReceipts = _model.outputListUsers!
             .map((e) => e.receipt)
@@ -641,7 +641,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                           CircularPercentIndicator(
                                             percent: functions.listAverage(
                                                 _model.listFullReceipts
-                                                    .toList()),
+                                                    .toList())!,
                                             radius: 70.0,
                                             lineWidth: 12.0,
                                             animation: true,
@@ -655,14 +655,11 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                 -0.1, -0.51),
                                             child: Text(
                                               key: const ValueKey('4'),
-                                              valueOrDefault<String>(
-                                                functions
-                                                    .listAverage(_model
-                                                        .listFullReceipts
-                                                        .toList())
-                                                    .toString(),
-                                                '0',
-                                              ),
+                                              functions
+                                                  .listAverage(_model
+                                                      .listFullReceipts
+                                                      .toList())
+                                                  .toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium

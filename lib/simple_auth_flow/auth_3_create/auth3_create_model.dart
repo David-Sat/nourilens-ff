@@ -10,6 +10,10 @@ class Auth3CreateModel extends FlutterFlowModel<Auth3CreateWidget> {
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;
   String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  // State field(s) for DisplayName widget.
+  FocusNode? displayNameFocusNode;
+  TextEditingController? displayNameTextController;
+  String? Function(BuildContext, String?)? displayNameTextControllerValidator;
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordTextController;
@@ -33,6 +37,9 @@ class Auth3CreateModel extends FlutterFlowModel<Auth3CreateWidget> {
     unfocusNode.dispose();
     emailAddressFocusNode?.dispose();
     emailAddressTextController?.dispose();
+
+    displayNameFocusNode?.dispose();
+    displayNameTextController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();

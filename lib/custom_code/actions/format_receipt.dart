@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 Future<FullReceiptStruct> formatReceipt(
   List<ReceiptItemsStruct>? itemList,
   DateTime? date,
@@ -40,7 +42,6 @@ Future<FullReceiptStruct> formatReceipt(
         FFAppState().sumOfItemsNutritionalScore ~/ FFAppState().numberOfItems;
   });
   ;
-
   return FullReceiptStruct(
     receiptItems:
         itemList ?? [], // Use the original list or an empty list if null
