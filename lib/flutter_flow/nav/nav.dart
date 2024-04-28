@@ -159,7 +159,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'profile',
           path: '/profile',
-          builder: (context, params) => const ProfileWidget(),
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'profile')
+              : const ProfileWidget(),
         ),
         FFRoute(
           name: 'edit_profile',
