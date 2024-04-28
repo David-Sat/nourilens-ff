@@ -65,10 +65,20 @@ class UsersRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
-  // "meanNutritionalScore" field.
-  int? _meanNutritionalScore;
-  int get meanNutritionalScore => _meanNutritionalScore ?? 0;
-  bool hasMeanNutritionalScore() => _meanNutritionalScore != null;
+  // "numberOfItems" field.
+  int? _numberOfItems;
+  int get numberOfItems => _numberOfItems ?? 0;
+  bool hasNumberOfItems() => _numberOfItems != null;
+
+  // "sumOfNutritionalValue" field.
+  int? _sumOfNutritionalValue;
+  int get sumOfNutritionalValue => _sumOfNutritionalValue ?? 0;
+  bool hasSumOfNutritionalValue() => _sumOfNutritionalValue != null;
+
+  // "meanNutritionalValue" field.
+  double? _meanNutritionalValue;
+  double get meanNutritionalValue => _meanNutritionalValue ?? 0.0;
+  bool hasMeanNutritionalValue() => _meanNutritionalValue != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -81,8 +91,11 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
     _title = snapshotData['title'] as String?;
-    _meanNutritionalScore =
-        castToType<int>(snapshotData['meanNutritionalScore']);
+    _numberOfItems = castToType<int>(snapshotData['numberOfItems']);
+    _sumOfNutritionalValue =
+        castToType<int>(snapshotData['sumOfNutritionalValue']);
+    _meanNutritionalValue =
+        castToType<double>(snapshotData['meanNutritionalValue']);
   }
 
   static CollectionReference get collection =>
@@ -129,7 +142,9 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? title,
-  int? meanNutritionalScore,
+  int? numberOfItems,
+  int? sumOfNutritionalValue,
+  double? meanNutritionalValue,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -143,7 +158,9 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'title': title,
-      'meanNutritionalScore': meanNutritionalScore,
+      'numberOfItems': numberOfItems,
+      'sumOfNutritionalValue': sumOfNutritionalValue,
+      'meanNutritionalValue': meanNutritionalValue,
     }.withoutNulls,
   );
 
@@ -165,7 +182,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
         e1?.title == e2?.title &&
-        e1?.meanNutritionalScore == e2?.meanNutritionalScore;
+        e1?.numberOfItems == e2?.numberOfItems &&
+        e1?.sumOfNutritionalValue == e2?.sumOfNutritionalValue &&
+        e1?.meanNutritionalValue == e2?.meanNutritionalValue;
   }
 
   @override
@@ -180,7 +199,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.lastActiveTime,
         e?.role,
         e?.title,
-        e?.meanNutritionalScore
+        e?.numberOfItems,
+        e?.sumOfNutritionalValue,
+        e?.meanNutritionalValue
       ]);
 
   @override

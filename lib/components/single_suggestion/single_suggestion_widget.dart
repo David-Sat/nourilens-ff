@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'single_suggestion_model.dart';
 export 'single_suggestion_model.dart';
 
@@ -45,8 +44,6 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 0.0),
       child: Container(
@@ -86,7 +83,12 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                               widget.foodSuggestion?.prevItem,
                               'prev',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                           Text(
                             formatNumber(
@@ -96,7 +98,12 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                               format: '',
                               locale: '',
                             ),
-                            style: FlutterFlowTheme.of(context).labelMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ],
                       ),
@@ -127,7 +134,12 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                               widget.foodSuggestion?.newItem,
                               'new',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                           Text(
                             formatNumber(
@@ -137,7 +149,12 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                               format: '',
                               locale: '',
                             ),
-                            style: FlutterFlowTheme.of(context).labelMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ],
                       ),
@@ -169,7 +186,11 @@ class _SingleSuggestionWidgetState extends State<SingleSuggestionWidget> {
                           ),
                           textAlign: TextAlign.start,
                           maxLines: 2,
-                          style: FlutterFlowTheme.of(context).bodySmall,
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ),

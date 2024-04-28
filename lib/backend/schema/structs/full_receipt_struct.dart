@@ -13,11 +13,15 @@ class FullReceiptStruct extends FFFirebaseStruct {
     DateTime? date,
     double? total,
     int? nutritionalValue,
+    int? numItems,
+    int? sumNutritionalValue,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _receiptItems = receiptItems,
         _date = date,
         _total = total,
         _nutritionalValue = nutritionalValue,
+        _numItems = numItems,
+        _sumNutritionalValue = sumNutritionalValue,
         super(firestoreUtilData);
 
   // "receipt_items" field.
@@ -49,6 +53,21 @@ class FullReceiptStruct extends FFFirebaseStruct {
       _nutritionalValue = nutritionalValue + amount;
   bool hasNutritionalValue() => _nutritionalValue != null;
 
+  // "NumItems" field.
+  int? _numItems;
+  int get numItems => _numItems ?? 0;
+  set numItems(int? val) => _numItems = val;
+  void incrementNumItems(int amount) => _numItems = numItems + amount;
+  bool hasNumItems() => _numItems != null;
+
+  // "sumNutritionalValue" field.
+  int? _sumNutritionalValue;
+  int get sumNutritionalValue => _sumNutritionalValue ?? 0;
+  set sumNutritionalValue(int? val) => _sumNutritionalValue = val;
+  void incrementSumNutritionalValue(int amount) =>
+      _sumNutritionalValue = sumNutritionalValue + amount;
+  bool hasSumNutritionalValue() => _sumNutritionalValue != null;
+
   static FullReceiptStruct fromMap(Map<String, dynamic> data) =>
       FullReceiptStruct(
         receiptItems: getStructList(
@@ -58,6 +77,8 @@ class FullReceiptStruct extends FFFirebaseStruct {
         date: data['date'] as DateTime?,
         total: castToType<double>(data['total']),
         nutritionalValue: castToType<int>(data['nutritionalValue']),
+        numItems: castToType<int>(data['NumItems']),
+        sumNutritionalValue: castToType<int>(data['sumNutritionalValue']),
       );
 
   static FullReceiptStruct? maybeFromMap(dynamic data) => data is Map
@@ -69,6 +90,8 @@ class FullReceiptStruct extends FFFirebaseStruct {
         'date': _date,
         'total': _total,
         'nutritionalValue': _nutritionalValue,
+        'NumItems': _numItems,
+        'sumNutritionalValue': _sumNutritionalValue,
       }.withoutNulls;
 
   @override
@@ -88,6 +111,14 @@ class FullReceiptStruct extends FFFirebaseStruct {
         ),
         'nutritionalValue': serializeParam(
           _nutritionalValue,
+          ParamType.int,
+        ),
+        'NumItems': serializeParam(
+          _numItems,
+          ParamType.int,
+        ),
+        'sumNutritionalValue': serializeParam(
+          _sumNutritionalValue,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -115,6 +146,16 @@ class FullReceiptStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        numItems: deserializeParam(
+          data['NumItems'],
+          ParamType.int,
+          false,
+        ),
+        sumNutritionalValue: deserializeParam(
+          data['sumNutritionalValue'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -127,18 +168,28 @@ class FullReceiptStruct extends FFFirebaseStruct {
         listEquality.equals(receiptItems, other.receiptItems) &&
         date == other.date &&
         total == other.total &&
-        nutritionalValue == other.nutritionalValue;
+        nutritionalValue == other.nutritionalValue &&
+        numItems == other.numItems &&
+        sumNutritionalValue == other.sumNutritionalValue;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([receiptItems, date, total, nutritionalValue]);
+  int get hashCode => const ListEquality().hash([
+        receiptItems,
+        date,
+        total,
+        nutritionalValue,
+        numItems,
+        sumNutritionalValue
+      ]);
 }
 
 FullReceiptStruct createFullReceiptStruct({
   DateTime? date,
   double? total,
   int? nutritionalValue,
+  int? numItems,
+  int? sumNutritionalValue,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -148,6 +199,8 @@ FullReceiptStruct createFullReceiptStruct({
       date: date,
       total: total,
       nutritionalValue: nutritionalValue,
+      numItems: numItems,
+      sumNutritionalValue: sumNutritionalValue,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

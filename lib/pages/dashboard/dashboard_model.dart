@@ -1,8 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/loading_indicator/loading_indicator_widget.dart';
-import '/components/nutritional_overview/nutritional_overview_widget.dart';
 import '/components/successes/successes_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dashboard_widget.dart' show DashboardWidget;
@@ -13,9 +11,24 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
 
   bool loading = false;
 
+  List<FullReceiptStruct> listFullReceipts = [];
+  void addToListFullReceipts(FullReceiptStruct item) =>
+      listFullReceipts.add(item);
+  void removeFromListFullReceipts(FullReceiptStruct item) =>
+      listFullReceipts.remove(item);
+  void removeAtIndexFromListFullReceipts(int index) =>
+      listFullReceipts.removeAt(index);
+  void insertAtIndexInListFullReceipts(int index, FullReceiptStruct item) =>
+      listFullReceipts.insert(index, item);
+  void updateListFullReceiptsAtIndex(
+          int index, Function(FullReceiptStruct) updateFn) =>
+      listFullReceipts[index] = updateFn(listFullReceipts[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Firestore Query - Query a collection] action in dashboard widget.
+  List<FullReceiptRecord>? outputListUsers;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -29,19 +42,13 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
   late SuccessesModel successesModel1;
   // Model for successes component.
   late SuccessesModel successesModel2;
-  // Model for nutritionalOverview component.
-  late NutritionalOverviewModel nutritionalOverviewModel;
   // Model for loading_indicator component.
   late LoadingIndicatorModel loadingIndicatorModel;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
     successesModel1 = createModel(context, () => SuccessesModel());
     successesModel2 = createModel(context, () => SuccessesModel());
-    nutritionalOverviewModel =
-        createModel(context, () => NutritionalOverviewModel());
     loadingIndicatorModel = createModel(context, () => LoadingIndicatorModel());
   }
 
@@ -50,11 +57,6 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
     unfocusNode.dispose();
     successesModel1.dispose();
     successesModel2.dispose();
-    nutritionalOverviewModel.dispose();
     loadingIndicatorModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

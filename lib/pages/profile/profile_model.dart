@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'process_image_upload_widget.dart' show ProcessImageUploadWidget;
+import 'profile_widget.dart' show ProfileWidget;
 import 'package:flutter/material.dart';
 
-class ProcessImageUploadModel
-    extends FlutterFlowModel<ProcessImageUploadWidget> {
+class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

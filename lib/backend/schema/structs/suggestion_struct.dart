@@ -16,6 +16,7 @@ class SuggestionStruct extends FFFirebaseStruct {
     double? newItemPrice,
     String? description,
     DateTime? date,
+    String? originalString,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _prevItem = prevItem,
         _prevItemPrice = prevItemPrice,
@@ -23,6 +24,7 @@ class SuggestionStruct extends FFFirebaseStruct {
         _newItemPrice = newItemPrice,
         _description = description,
         _date = date,
+        _originalString = originalString,
         super(firestoreUtilData);
 
   // "prevItem" field.
@@ -65,6 +67,12 @@ class SuggestionStruct extends FFFirebaseStruct {
   set date(DateTime? val) => _date = val;
   bool hasDate() => _date != null;
 
+  // "original_string" field.
+  String? _originalString;
+  String get originalString => _originalString ?? '';
+  set originalString(String? val) => _originalString = val;
+  bool hasOriginalString() => _originalString != null;
+
   static SuggestionStruct fromMap(Map<String, dynamic> data) =>
       SuggestionStruct(
         prevItem: data['prevItem'] as String?,
@@ -73,6 +81,7 @@ class SuggestionStruct extends FFFirebaseStruct {
         newItemPrice: castToType<double>(data['newItemPrice']),
         description: data['description'] as String?,
         date: data['date'] as DateTime?,
+        originalString: data['original_string'] as String?,
       );
 
   static SuggestionStruct? maybeFromMap(dynamic data) => data is Map
@@ -86,6 +95,7 @@ class SuggestionStruct extends FFFirebaseStruct {
         'newItemPrice': _newItemPrice,
         'description': _description,
         'date': _date,
+        'original_string': _originalString,
       }.withoutNulls;
 
   @override
@@ -113,6 +123,10 @@ class SuggestionStruct extends FFFirebaseStruct {
         'date': serializeParam(
           _date,
           ParamType.DateTime,
+        ),
+        'original_string': serializeParam(
+          _originalString,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -148,6 +162,11 @@ class SuggestionStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
+        originalString: deserializeParam(
+          data['original_string'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -161,12 +180,20 @@ class SuggestionStruct extends FFFirebaseStruct {
         newItem == other.newItem &&
         newItemPrice == other.newItemPrice &&
         description == other.description &&
-        date == other.date;
+        date == other.date &&
+        originalString == other.originalString;
   }
 
   @override
-  int get hashCode => const ListEquality().hash(
-      [prevItem, prevItemPrice, newItem, newItemPrice, description, date]);
+  int get hashCode => const ListEquality().hash([
+        prevItem,
+        prevItemPrice,
+        newItem,
+        newItemPrice,
+        description,
+        date,
+        originalString
+      ]);
 }
 
 SuggestionStruct createSuggestionStruct({
@@ -176,6 +203,7 @@ SuggestionStruct createSuggestionStruct({
   double? newItemPrice,
   String? description,
   DateTime? date,
+  String? originalString,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -188,6 +216,7 @@ SuggestionStruct createSuggestionStruct({
       newItemPrice: newItemPrice,
       description: description,
       date: date,
+      originalString: originalString,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

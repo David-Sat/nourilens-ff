@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'process_image_upload_model.dart';
 export 'process_image_upload_model.dart';
 
@@ -41,8 +40,6 @@ class _ProcessImageUploadWidgetState extends State<ProcessImageUploadWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -69,6 +66,7 @@ class _ProcessImageUploadWidgetState extends State<ProcessImageUploadWidget> {
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: FlutterFlowTheme.of(context).primaryText,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -80,6 +78,7 @@ class _ProcessImageUploadWidgetState extends State<ProcessImageUploadWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
                         color: FlutterFlowTheme.of(context).secondaryText,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -104,6 +103,7 @@ class _ProcessImageUploadWidgetState extends State<ProcessImageUploadWidget> {
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                               ),
                       elevation: 2.0,
                     ),

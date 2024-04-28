@@ -3,7 +3,6 @@ import '/components/nutrivalue/nutrivalue_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'single_receipt_model.dart';
 export 'single_receipt_model.dart';
 
@@ -45,8 +44,6 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 0.0),
       child: Container(
@@ -76,7 +73,7 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RichText(
-                      textScaleFactor: MediaQuery.of(context).textScaleFactor,
+                      textScaler: MediaQuery.of(context).textScaler,
                       text: TextSpan(
                         children: [
                           const TextSpan(
@@ -91,7 +88,10 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
                             ),
                           )
                         ],
-                        style: FlutterFlowTheme.of(context).bodyLarge,
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                     Padding(
@@ -103,7 +103,11 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
                           widget.receiptData!.date!,
                           locale: FFLocalizations.of(context).languageCode,
                         ),
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                       ),
                     ),
                   ],
@@ -127,7 +131,11 @@ class _SingleReceiptWidgetState extends State<SingleReceiptWidget> {
                         '50',
                       ),
                       textAlign: TextAlign.end,
-                      style: FlutterFlowTheme.of(context).headlineSmall,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0.0,
+                              ),
                     ),
                   ),
                   wrapWithModel(

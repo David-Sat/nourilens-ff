@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'auth3_create_model.dart';
 export 'auth3_create_model.dart';
 
@@ -23,49 +22,54 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0.9, 0.9),
-          end: const Offset(1.0, 1.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0, 0.524),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => Auth3CreateModel());
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.displayNameTextController ??= TextEditingController();
+    _model.displayNameFocusNode ??= FocusNode();
+
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
-    _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.9, 0.9),
+            end: const Offset(1.0, 1.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0, 0.524),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -79,8 +83,6 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -175,7 +177,11 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                       Text(
                                         'Nourilens',
                                         style: FlutterFlowTheme.of(context)
-                                            .displaySmall,
+                                            .displaySmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -194,7 +200,11 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                       Text(
                                         'Create an account',
                                         style: FlutterFlowTheme.of(context)
-                                            .displaySmall,
+                                            .displaySmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
@@ -202,7 +212,11 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                         child: Text(
                                           'Let\'s get started by filling out the form below.',
                                           style: FlutterFlowTheme.of(context)
-                                              .labelLarge,
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                       Padding(
@@ -211,8 +225,8 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                         child: SizedBox(
                                           width: double.infinity,
                                           child: TextFormField(
-                                            controller:
-                                                _model.emailAddressController,
+                                            controller: _model
+                                                .emailAddressTextController,
                                             focusNode:
                                                 _model.emailAddressFocusNode,
                                             autofocus: true,
@@ -224,7 +238,12 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               labelText: 'Email',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
@@ -272,14 +291,104 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                                       .secondaryBackground,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                             keyboardType:
                                                 TextInputType.emailAddress,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
                                             validator: _model
-                                                .emailAddressControllerValidator
+                                                .emailAddressTextControllerValidator
+                                                .asValidator(context),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 16.0),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: TextFormField(
+                                            controller: _model
+                                                .displayNameTextController,
+                                            focusNode:
+                                                _model.displayNameFocusNode,
+                                            autofocus: true,
+                                            autofillHints: const [AutofillHints.name],
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText: 'Name',
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              filled: true,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            cursorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            validator: _model
+                                                .displayNameTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -291,7 +400,7 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                           width: double.infinity,
                                           child: TextFormField(
                                             controller:
-                                                _model.passwordController,
+                                                _model.passwordTextController,
                                             focusNode: _model.passwordFocusNode,
                                             autofocus: true,
                                             autofillHints: const [
@@ -303,7 +412,12 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               labelText: 'Password',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
@@ -372,12 +486,16 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
                                             validator: _model
-                                                .passwordControllerValidator
+                                                .passwordTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -389,7 +507,7 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                           width: double.infinity,
                                           child: TextFormField(
                                             controller: _model
-                                                .passwordConfirmController,
+                                                .passwordConfirmTextController,
                                             focusNode:
                                                 _model.passwordConfirmFocusNode,
                                             autofocus: true,
@@ -402,7 +520,12 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               labelText: 'Confirm Password',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
@@ -471,13 +594,17 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                             minLines: 1,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
                                             validator: _model
-                                                .passwordConfirmControllerValidator
+                                                .passwordConfirmTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -493,10 +620,10 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                             onPressed: () async {
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
-                                              if (_model.passwordController
+                                              if (_model.passwordTextController
                                                       .text !=
                                                   _model
-                                                      .passwordConfirmController
+                                                      .passwordConfirmTextController
                                                       .text) {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -512,9 +639,11 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               final user = await authManager
                                                   .createAccountWithEmail(
                                                 context,
-                                                _model.emailAddressController
+                                                _model
+                                                    .emailAddressTextController
                                                     .text,
-                                                _model.passwordController.text,
+                                                _model.passwordTextController
+                                                    .text,
                                               );
                                               if (user == null) {
                                                 return;
@@ -541,6 +670,7 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: const BorderSide(
@@ -579,9 +709,8 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                             );
                                           },
                                           child: RichText(
-                                            textScaleFactor:
-                                                MediaQuery.of(context)
-                                                    .textScaleFactor,
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
                                             text: TextSpan(
                                               children: [
                                                 const TextSpan(
@@ -602,6 +731,7 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                                                     context)
                                                                 .primary,
                                                         fontSize: 16.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                       ),
@@ -609,7 +739,12 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               ],
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelLarge,
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                           ),
                                         ),
@@ -626,9 +761,8 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 12.0),
                                         child: RichText(
-                                          textScaleFactor:
-                                              MediaQuery.of(context)
-                                                  .textScaleFactor,
+                                          textScaler:
+                                              MediaQuery.of(context).textScaler,
                                           text: TextSpan(
                                             children: const [
                                               TextSpan(
@@ -637,7 +771,11 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
-                                                .labelLarge,
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                       ),
@@ -681,6 +819,7 @@ class _Auth3CreateWidgetState extends State<Auth3CreateWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,

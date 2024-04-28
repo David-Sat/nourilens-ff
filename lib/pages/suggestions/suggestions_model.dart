@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/components/loading_indicator/loading_indicator_widget.dart';
 import '/components/single_suggestion/single_suggestion_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,14 +18,14 @@ class SuggestionsModel extends FlutterFlowModel<SuggestionsWidget> {
   String? items;
   // Models for single_suggestion dynamic component.
   late FlutterFlowDynamicModels<SingleSuggestionModel> singleSuggestionModels;
+  // Stores action output result for [Firestore Query - Query a collection] action in menuItem widget.
+  List<FullReceiptRecord>? receiptList;
   // Stores action output result for [Custom Action - getRecentItems] action in menuItem widget.
   String? itemsLow;
   // Stores action output result for [Backend Call - API (suggestions)] action in menuItem widget.
   ApiCallResponse? apiSuggestions;
   // Model for loading_indicator component.
   late LoadingIndicatorModel loadingIndicatorModel;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -39,8 +40,4 @@ class SuggestionsModel extends FlutterFlowModel<SuggestionsWidget> {
     singleSuggestionModels.dispose();
     loadingIndicatorModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

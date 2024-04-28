@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'receipt_visualization_model.dart';
 export 'receipt_visualization_model.dart';
 
@@ -37,8 +36,6 @@ class _ReceiptVisualizationWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -85,7 +82,11 @@ class _ReceiptVisualizationWidgetState
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: Text(
                         '[Fecha]',
-                        style: FlutterFlowTheme.of(context).headlineSmall,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                       ),
                     ),
                     Padding(
@@ -94,7 +95,11 @@ class _ReceiptVisualizationWidgetState
                       child: Text(
                         'Receipt elements',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                       ),
                     ),
                     Padding(
@@ -111,7 +116,10 @@ class _ReceiptVisualizationWidgetState
                               blurRadius: 0.0,
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              offset: const Offset(0.0, 1.0),
+                              offset: const Offset(
+                                0.0,
+                                1.0,
+                              ),
                             )
                           ],
                         ),
@@ -122,12 +130,22 @@ class _ReceiptVisualizationWidgetState
                             Expanded(
                               child: Text(
                                 'Coffee',
-                                style: FlutterFlowTheme.of(context).labelLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Text(
                               'Price',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ],
                         ),
@@ -147,7 +165,10 @@ class _ReceiptVisualizationWidgetState
                               blurRadius: 0.0,
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              offset: const Offset(0.0, 1.0),
+                              offset: const Offset(
+                                0.0,
+                                1.0,
+                              ),
                             )
                           ],
                         ),
@@ -158,12 +179,22 @@ class _ReceiptVisualizationWidgetState
                             Expanded(
                               child: Text(
                                 'Milk',
-                                style: FlutterFlowTheme.of(context).labelLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Text(
                               'Price',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ],
                         ),
@@ -183,7 +214,10 @@ class _ReceiptVisualizationWidgetState
                               blurRadius: 0.0,
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              offset: const Offset(0.0, 1.0),
+                              offset: const Offset(
+                                0.0,
+                                1.0,
+                              ),
                             )
                           ],
                         ),
@@ -194,12 +228,22 @@ class _ReceiptVisualizationWidgetState
                             Expanded(
                               child: Text(
                                 'Espresso Shots',
-                                style: FlutterFlowTheme.of(context).labelLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Text(
                               'Price',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ],
                         ),
@@ -219,7 +263,10 @@ class _ReceiptVisualizationWidgetState
                               blurRadius: 0.0,
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              offset: const Offset(0.0, 1.0),
+                              offset: const Offset(
+                                0.0,
+                                1.0,
+                              ),
                             )
                           ],
                         ),
@@ -230,12 +277,22 @@ class _ReceiptVisualizationWidgetState
                             Expanded(
                               child: Text(
                                 'Sugar',
-                                style: FlutterFlowTheme.of(context).labelLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Text(
                               'Price',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ],
                         ),

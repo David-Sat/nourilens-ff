@@ -35,6 +35,7 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
       _model.items = await actions.getRecentItems(
         FFAppState().receipts.toList(),
         7,
+        FFAppState().suggestions.toList(),
       );
     });
 
@@ -120,7 +121,12 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                               24.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Improvement Suggestions',
-                            style: FlutterFlowTheme.of(context).headlineMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ),
@@ -132,7 +138,12 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                           child: Text(
                             'Your most recent suggestions for improvement',
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).labelMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ),
@@ -196,144 +207,202 @@ class _SuggestionsWidgetState extends State<SuggestionsWidget> {
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 8.0, 16.0, 8.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            _model.itemsLow = await actions.getRecentItems(
-                              suggestionsFullReceiptRecordList
-                                  .map((e) => e.receipt)
-                                  .toList(),
-                              7,
-                            );
-                            setState(() {
-                              _model.loading = true;
-                            });
-                            if (_model.itemsLow != '') {
-                              _model.apiSuggestions =
-                                  await FastAPIGeminiGroup.suggestionsCall.call(
-                                itemsString: _model.itemsLow,
-                              );
-                              if ((_model.apiSuggestions?.succeeded ?? true)) {
-                                await SuggestionsRecord.createDoc(
-                                        currentUserReference!)
-                                    .set(createSuggestionsRecordData(
-                                  suggestions: createSuggestionStruct(
-                                    prevItem: PreSuggestionStruct.maybeFromMap(
-                                            (_model.apiSuggestions?.jsonBody ??
-                                                ''))
-                                        ?.prevItem,
-                                    prevItemPrice:
-                                        PreSuggestionStruct.maybeFromMap((_model
-                                                    .apiSuggestions?.jsonBody ??
-                                                ''))
-                                            ?.prevItemPrice,
-                                    newItem: PreSuggestionStruct.maybeFromMap(
-                                            (_model.apiSuggestions?.jsonBody ??
-                                                ''))
-                                        ?.newItem,
-                                    newItemPrice:
-                                        PreSuggestionStruct.maybeFromMap((_model
-                                                    .apiSuggestions?.jsonBody ??
-                                                ''))
-                                            ?.newItemPrice,
-                                    description:
-                                        PreSuggestionStruct.maybeFromMap((_model
-                                                    .apiSuggestions?.jsonBody ??
-                                                ''))
-                                            ?.description,
-                                    date: getCurrentTimestamp,
-                                    clearUnsetFields: false,
-                                    create: true,
-                                  ),
-                                ));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Successfully generated suggestion',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Suggestion generation failed',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                  ),
-                                );
-                              }
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'We have no improvement suggestions at this point :)!',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                        child: StreamBuilder<List<SuggestionsRecord>>(
+                          stream: querySuggestionsRecord(
+                            parent: currentUserReference,
+                            queryBuilder: (suggestionsRecord) =>
+                                suggestionsRecord.orderBy('suggestions.date',
+                                    descending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
                                 ),
                               );
                             }
-
-                            setState(() {
-                              _model.loading = false;
-                            });
-
-                            setState(() {});
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 3.0,
-                                  color: Color(0x411D2429),
-                                  offset: Offset(0.0, 1.0),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Generate New Suggestions',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                            List<SuggestionsRecord>
+                                menuItemSuggestionsRecordList = snapshot.data!;
+                            return InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                _model.receiptList =
+                                    await queryFullReceiptRecordOnce(
+                                  parent: currentUserReference,
+                                  queryBuilder: (fullReceiptRecord) =>
+                                      fullReceiptRecord.orderBy('receipt.date',
+                                          descending: true),
+                                  limit: 15,
+                                );
+                                _model.itemsLow = await actions.getRecentItems(
+                                  suggestionsFullReceiptRecordList
+                                      .map((e) => e.receipt)
+                                      .toList(),
+                                  7,
+                                  menuItemSuggestionsRecordList
+                                      .map((e) => e.suggestions)
+                                      .toList(),
+                                );
+                                setState(() {
+                                  _model.loading = true;
+                                });
+                                if (_model.itemsLow != '') {
+                                  _model.apiSuggestions =
+                                      await FastAPIGeminiGroup.suggestionsCall
+                                          .call(
+                                    itemsString: _model.itemsLow,
+                                  );
+                                  if ((_model.apiSuggestions?.succeeded ??
+                                      true)) {
+                                    await SuggestionsRecord.createDoc(
+                                            currentUserReference!)
+                                        .set(createSuggestionsRecordData(
+                                      suggestions: createSuggestionStruct(
+                                        prevItem:
+                                            PreSuggestionStruct.maybeFromMap(
+                                                    (_model.apiSuggestions
+                                                            ?.jsonBody ??
+                                                        ''))
+                                                ?.prevItem,
+                                        prevItemPrice:
+                                            PreSuggestionStruct.maybeFromMap(
+                                                    (_model.apiSuggestions
+                                                            ?.jsonBody ??
+                                                        ''))
+                                                ?.prevItemPrice,
+                                        newItem:
+                                            PreSuggestionStruct.maybeFromMap(
+                                                    (_model.apiSuggestions
+                                                            ?.jsonBody ??
+                                                        ''))
+                                                ?.newItem,
+                                        newItemPrice:
+                                            PreSuggestionStruct.maybeFromMap(
+                                                    (_model.apiSuggestions
+                                                            ?.jsonBody ??
+                                                        ''))
+                                                ?.newItemPrice,
+                                        description:
+                                            PreSuggestionStruct.maybeFromMap(
+                                                    (_model.apiSuggestions
+                                                            ?.jsonBody ??
+                                                        ''))
+                                                ?.description,
+                                        date: getCurrentTimestamp,
+                                        originalString: _model.itemsLow,
+                                        clearUnsetFields: false,
+                                        create: true,
+                                      ),
+                                    ));
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Successfully generated suggestion',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: const Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Suggestion generation failed',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: const Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                      ),
+                                    );
+                                  }
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'We have no improvement suggestions at this point :)!',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
                                     ),
+                                  );
+                                }
+
+                                setState(() {
+                                  _model.loading = false;
+                                });
+
+                                setState(() {});
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 3.0,
+                                      color: Color(0x411D2429),
+                                      offset: Offset(
+                                        0.0,
+                                        1.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          'Generate New Suggestions',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         ),
                       ),
                     ],
