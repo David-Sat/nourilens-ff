@@ -138,6 +138,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'dashboard': const DashboardWidget(),
       'receipts_overview': const ReceiptsOverviewWidget(),
       'suggestions': const SuggestionsWidget(),
+      'profile': const ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -186,6 +187,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 32.0,
             ),
             label: '_suggest',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_circle_outlined,
+              size: 24.0,
+            ),
+            label: '__profile',
             tooltip: '',
           )
         ],
