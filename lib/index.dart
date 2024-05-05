@@ -17,3 +17,4 @@ export '/onboarding/onboarding_widget.dart' show OnboardingWidget;
 export '/pages/view_receipt/view_receipt_widget.dart' show ViewReceiptWidget;
 export '/pages/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
+export '/pages/stats/stats_widget.dart' show StatsWidget;

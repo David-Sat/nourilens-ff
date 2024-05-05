@@ -24,11 +24,13 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
           int index, Function(FullReceiptStruct) updateFn) =>
       listFullReceipts[index] = updateFn(listFullReceipts[index]);
 
+  double? nutriScore = 0.7;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in dashboard widget.
-  List<FullReceiptRecord>? outputListUsers;
+  List<FullReceiptRecord>? allReceipts;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));

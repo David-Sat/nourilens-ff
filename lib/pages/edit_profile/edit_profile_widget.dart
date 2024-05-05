@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -23,14 +24,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
-    _model.textController1 ??= TextEditingController();
+    _model.textController ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
-
-    _model.textController3 ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -59,8 +57,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
             color: FlutterFlowTheme.of(context).info,
             size: 25.0,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            context.pushNamed('profile');
           },
         ),
         title: Text(
@@ -124,7 +122,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: _model.textController1,
+                              controller: _model.textController,
                               focusNode: _model.textFieldFocusNode1,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -180,7 +178,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                              validator: _model.textController1Validator
+                              validator: _model.textControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -195,7 +193,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: _model.textController2,
+                              controller: _model.emailTextController,
                               focusNode: _model.textFieldFocusNode2,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -253,95 +251,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     color: const Color(0xFFDBE2E7),
                                     letterSpacing: 0.0,
                                   ),
-                              validator: _model.textController2Validator
-                                  .asValidator(context),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 0.0),
-                            child: TextFormField(
-                              controller: _model.textController3,
-                              focusNode: _model.textFieldFocusNode3,
-                              textCapitalization: TextCapitalization.none,
-                              obscureText: !_model.passwordVisibility,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                labelStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                    ),
-                                hintText: 'Password',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                filled: true,
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                suffixIcon: InkWell(
-                                  onTap: () => setState(
-                                    () => _model.passwordVisibility =
-                                        !_model.passwordVisibility,
-                                  ),
-                                  focusNode: FocusNode(skipTraversal: true),
-                                  child: Icon(
-                                    _model.passwordVisibility
-                                        ? Icons.visibility_outlined
-                                        : Icons.visibility_off_outlined,
-                                    color: const Color(0xFF757575),
-                                    size: 22.0,
-                                  ),
-                                ),
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: const Color(0xFFDBE2E7),
-                                    letterSpacing: 0.0,
-                                  ),
-                              validator: _model.textController3Validator
+                              validator: _model.emailTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -352,8 +262,23 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 ),
               ),
               FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  if (_model.emailTextController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Email required!',
+                        ),
+                      ),
+                    );
+                    return;
+                  }
+
+                  await authManager.updateEmail(
+                    email: _model.emailTextController.text,
+                    context: context,
+                  );
+                  setState(() {});
                 },
                 text: 'Save Changes',
                 options: FFButtonOptions(

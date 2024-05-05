@@ -85,7 +85,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'receipts_overview',
           path: '/receipts',
-          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'receipts_overview')
               : const ReceiptsOverviewWidget(),
@@ -168,6 +167,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'edit_profile',
           path: '/editProfile',
           builder: (context, params) => const EditProfileWidget(),
+        ),
+        FFRoute(
+          name: 'Stats',
+          path: '/stats',
+          builder: (context, params) => const StatsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

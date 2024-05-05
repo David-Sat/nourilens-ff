@@ -27,7 +27,7 @@ double? listAverage(List<FullReceiptStruct>? receipts) {
     }
     return (suma / contador) / 10;
   } else {
-    return 4.0 / 10;
+    return 6.0 / 10;
   }
 }
 
